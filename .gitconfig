@@ -1,0 +1,13 @@
+[user]
+	email = vladwithcode@gmail.com
+[core]
+	editor = nvim
+[maintenance]
+	repo = /media/DataDisk/vladwb/Web/sibra/sibra-site
+[init]
+	defaultBranch = main
+[pull]
+	ff = only
+[safe]
+	directory = /media/DataDisk/vladwb/Web/sibra/colinas/
+	directory = .

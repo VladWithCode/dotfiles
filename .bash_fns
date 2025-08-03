@@ -1,0 +1,30 @@
+function tpldev() {
+    default_proxy="http://localhost:8080"
+    default_proxyport=8000
+    default_proxybind="0.0.0.0"
+    if [ "$2" != "" ]; then
+        default_proxy="$2"
+    fi
+    if [ "$3" != "" ]; then
+        default_proxyport="$3"
+    fi
+    if [ "$4" != "" ]; then
+        default_proxybind="$4"
+    fi
+
+    echo "executing templ with:"
+    echo "proxy=$default_proxy"
+    echo "proxyport=$default_proxyport"
+    echo "proxybind=$default_proxybind"
+    echo ""
+
+    templ generate -watch -cmd "go run $1" -proxy=$default_proxy -proxyport=$default_proxyport -proxybind="$default_proxybind" -open-browser=false -log-level=warn
+}
+
+function wlsdev() {
+    wails dev -tags webkit2_41
+}
+
+function mkcdir() {
+    mkdir $1 && cd $1
+}
