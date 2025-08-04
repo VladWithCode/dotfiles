@@ -1,0 +1,18 @@
+:root {
+    --bg-opacity: 0.9;
+    --color-bg: oklch(0.2046 0.0458 306.61);
+}
+
+window#waybar {
+    font-family: "ZedMono Nerd Font";
+    font-size: 16px;
+    color: #fcfcfc;
+    background-color: rgba(0, 0, 0, 0);
+    padding: 2px 10px;
+}
+
+.modules-left {
+    background-color: var(--color-bg);
+    margin-left: 8px;
+    padding-y: 2px;
+}

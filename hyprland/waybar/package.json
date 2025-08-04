@@ -1,0 +1,11 @@
+{
+    "dependencies": {
+        "postcss": "^8.5.6",
+        "postcss-cli": "^11.0.1",
+        "postcss-preset-env": "^10.2.4"
+    },
+    "scripts": {
+        "build": "postcss ./src/style.css -o ./style.css",
+        "dev": "postcss ./src/style.css -o ./style.css --watch"
+    }
+}

@@ -1,0 +1,86 @@
+@define-color dark rgb(29, 17, 40);
+@define-color light rgb(229, 212, 237);
+@define-color accent rgb(109, 114, 195);
+
+window#waybar {
+    font-family: "ZedMono Nerd Font";
+    font-size: 18px;
+    background-color: rgba(0, 0, 0, 0);
+    color: @light;
+}
+
+#workspaces,
+.modules-right {
+    background-color: alpha(@dark, 0.98);
+    margin-top: 4px;
+    padding: 0px;
+    border-radius: 10px;
+    border: 3px solid shade(@accent, 0.8);
+    font-size: 18px;
+}
+
+.modules-left {
+    margin-left: 8px;
+}
+.modules-right {
+    margin-right: 8px;
+}
+
+#window {
+    color: shade(@light, 1.05);
+    font-size: 26px;
+    font-weight: bold;
+    background-color: alpha(@dark, 0.8);
+    padding: 8px 32px;
+    margin-top: 2px;
+    border-radius: 10px;
+    box-shadow: inset 0 0 2px 3px @accent;
+}
+
+#workspaces button:not(:last-child) {
+    margin-right: 4px;
+}
+#workspaces button:not(.active) {
+    color: @light;
+}
+#workspaces button:hover {
+    background-color: @accent;
+}
+#workspaces button.persistent {
+    font-weight: bold;
+    color: shade(@light, 0.95);
+}
+#workspaces button.urgent,
+#workspaces button.persistent.active {
+    color: @dark;
+    background-color: @light;
+    font-weight: bold;
+}
+
+#custom-apps {
+    margin: 0 8px;
+    color: @light;
+    font-size: 32px;
+    margin-right: 24px;
+    padding: 4px;
+}
+
+.modules-right > * > * {
+    margin-right: 12px;
+}
+
+#custom-power {
+    margin-right: 0px;
+}
+
+#clock {
+    background-color: @accent;
+    border-radius: 8px;
+    padding: 0px 4px;
+}
+
+#pulseaudio {
+    border-radius: 8px;
+    padding: 0px 4px;
+}
+
