@@ -46,9 +46,11 @@
 font-family = "ZedMono Nerd Font Mono"
 font-size = 20
 
-theme = rose-pine
+# theme = rose-pine
 
 background-opacity = 0.95
 background-blur = 20
 
 window-theme = ghostty
+
+config-file = "keybinds"

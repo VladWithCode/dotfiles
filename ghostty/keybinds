@@ -1,0 +1,11 @@
+# Split navigation
+keybind = ctrl+alt+[=resize_split:left,50
+keybind = ctrl+alt+]=resize_split:right,50
+keybind = performable:alt+h=goto_split:left
+keybind = performable:alt+j=goto_split:down
+keybind = performable:alt+k=goto_split:up
+keybind = performable:alt+l=goto_split:right
+
+# Tab navigation
+keybind = alt+space>l=previous_tab
+keybind = alt+space>shift+l=last_tab

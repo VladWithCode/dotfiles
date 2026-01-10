@@ -22,6 +22,7 @@ HISTFILESIZE=2000
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
+shopt -s extglob
 
 # If set, the pattern "**" used in a pathname expansion context will
 # match all files and zero or more directories and subdirectories.
@@ -37,7 +38,7 @@ fi
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
-    xterm-color|*-256color|*-kitty) color_prompt=yes;;
+    xterm-color|*-256color|*-kitty|*-ghostty) color_prompt=yes;;
 esac
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
@@ -65,7 +66,7 @@ unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
-xterm*|rxvt*|*-kitty)
+xterm*|rxvt*|*-kitty|*-ghostty)
     PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \W\a\]$PS1"
     ;;
 *)
@@ -118,39 +119,36 @@ fi
 
 # Start keychain
 # Adds any file ending in (exactly) "_key"
-eval "$(keychain -q -Q --eval --agents ssh ${HOME}/.ssh/*_key!(s|.pub))"
+eval "$(keychain -q -Q --eval ${HOME}/.ssh/*_key!(s|.pub))"
 
 # Add neovim bin to PATH
 # keeping for now
 # export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
-export PATH="$PATH:/opt/nvim-11/bin"
+# export PATH="$PATH:/opt/nvim-11/bin"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-. "$HOME/.cargo/env"
+
+# . "$HOME/.cargo/env"
 
 # fnm
-FNM_PATH="/home/vladwb/.local/share/fnm"
-if [ -d "$FNM_PATH" ]; then
-  export PATH="$FNM_PATH:$PATH"
-  eval "`fnm env`"
-fi
+# FNM_PATH="/home/vladwb/.local/share/fnm"
+# if [ -d "$FNM_PATH" ]; then
+#   export PATH="$FNM_PATH:$PATH"
+#   eval "`fnm env`"
+# fi
 
-# fnm
-FNM_PATH="/home/vladwb/.local/share/fnm"
-if [ -d "$FNM_PATH" ]; then
-  export PATH="$FNM_PATH:$PATH"
-  eval "`fnm env`"
-fi
+# flutter
+# export PATH="$PATH:/opt/flutter/bin"
+
+# osxcross bin
+# export PATH="$PATH:/home/vladwb/developer/tools/osxcross/target/bin"
+
+# opencode
+# export PATH=/home/vladwb/.opencode/bin:$PATH
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
-
-# flutter
-export PATH="$PATH:/opt/flutter/bin"
-
-# osxcross bin
-export PATH="$PATH:/home/vladwb/developer/tools/osxcross/target/bin"
 
 # opencode
 export PATH=/home/vladwb/.opencode/bin:$PATH
