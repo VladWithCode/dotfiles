@@ -16,31 +16,19 @@ if [ -n "$BASH_VERSION" ]; then
     fi
 fi
 
-# set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/bin" ] ; then
-    PATH="$HOME/bin:$PATH"
-fi
+# PATH helper (POSIX, shared with ~/.bash_fns)
+. "$HOME/.path_fns"
 
-# set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/.local/bin" ] ; then
-    PATH="$HOME/.local/bin:$PATH"
-fi
-. "$HOME/.cargo/env"
+# set PATH so it includes user's private bins if they exist
+path_add -p "$HOME/bin"
+path_add -p "$HOME/.local/bin"
 
-# Add Zig to path
-export PATH="$PATH:/opt/zig"
+# Go
+path_add "/usr/local/go/bin"
+path_add "$HOME/go/bin"
 
-# Add Go to path
-export PATH="$PATH:/usr/local/go/bin:/home/vladwb/go/bin"
-
-# Add c3c to path
-export PATH="$PATH:/opt/c3"
-
-# Set default editor to neovim
+# Default editor
 export SUDO_EDITOR="nvim"
 export EDITOR="nvim"
 export VISUAL="nvim"
 export MANPAGER="nvim +Man!"
-
-# Zig as C compiler
-export CC="zig cc"

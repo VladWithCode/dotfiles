@@ -122,37 +122,23 @@ shopt -s extglob
 # Adds any file ending in (exactly) "_key"
 eval "$(keychain -q -Q --eval ${HOME}/.ssh/*_key!(s|.pub))"
 
-# Add neovim bin to PATH
-# keeping for now
-# export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
-export PATH="$PATH:/opt/nvim-11/bin"
+# --- PATH ---------------------------------------------------------------
+export BUN_INSTALL="$HOME/.bun"
+export PNPM_HOME="$HOME/.local/share/pnpm"
+
+path_add -p "$BUN_INSTALL/bin"
+path_add -p "$PNPM_HOME"
+path_add -p "$HOME/.opencode/bin"
+
+# path_add "/opt/nvim-11/bin"
+# path_add "$HOME/developer/tools/osxcross/target/bin"
+path_add "$HOME/Data/applications/bin"
+# path_add "/opt/nvim-linux-x86_64/bin"
+# ------------------------------------------------------------------------
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-. "$HOME/.cargo/env"
+[ -f ~/.cargo/env ] && . ~/.cargo/env
 
-# fnm
-FNM_PATH="/home/vladwb/.local/share/fnm"
-if [ -d "$FNM_PATH" ]; then
-  export PATH="$FNM_PATH:$PATH"
-  eval "`fnm env`"
-fi
-
-# fnm
-FNM_PATH="/home/vladwb/.local/share/fnm"
-if [ -d "$FNM_PATH" ]; then
-  export PATH="$FNM_PATH:$PATH"
-  eval "`fnm env`"
-fi
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
-
-# flutter
-export PATH="$PATH:/opt/flutter/bin"
-
-# osxcross bin
-export PATH="$PATH:/home/vladwb/developer/tools/osxcross/target/bin"
-
-# opencode
-export PATH=/home/vladwb/.opencode/bin:$PATH
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
