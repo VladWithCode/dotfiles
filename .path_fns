@@ -1,0 +1,28 @@
+# shellcheck shell=sh
+# POSIX-compatible PATH helper. Sourced by ~/.bash_fns and ~/.profile.
+
+# Add a directory to PATH exactly once.
+#   path_add DIR        -> append
+#   path_add -p DIR     -> prepend
+# Skips directories that don't exist and entries already present.
+path_add() {
+    prepend=0
+    if [ "$1" = "-p" ]; then
+        prepend=1
+        shift
+    fi
+
+    dir="$1"
+    [ -d "$dir" ] || return 0
+
+    case ":$PATH:" in
+        *":$dir:"*) return 0 ;;
+    esac
+
+    if [ "$prepend" -eq 1 ]; then
+        PATH="$dir:$PATH"
+    else
+        PATH="$PATH:$dir"
+    fi
+    export PATH
+}

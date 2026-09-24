@@ -1,3 +1,4 @@
+# shellcheck shell=bash
 function tpldev() {
     default_proxy="http://localhost:8080"
     default_proxyport=8000
@@ -28,3 +29,6 @@ function wlsdev() {
 function mkcdir() {
     mkdir $1 && cd $1
 }
+
+# PATH helper (shared with ~/.profile, which may run without bash)
+. "$HOME/.path_fns"
