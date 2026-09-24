@@ -18,7 +18,7 @@ function tpldev() {
     echo "proxybind=$default_proxybind"
     echo ""
 
-    templ generate -watch -cmd "go run $1" -proxy=$default_proxy -proxyport=$default_proxyport -proxybind="$default_proxybind" -open-browser=false -log-level=warn
+    templ generate -watch -cmd "go run $1" -proxy=$default_proxy -proxyport=$default_proxyport -proxybind="$default_proxybind" -open-browser=false
 }
 
 function wlsdev() {
