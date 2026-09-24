@@ -117,8 +117,10 @@ if ! shopt -oq posix; then
 fi
 
 # Start keychain
+# The *_key!(...) glob needs extglob
+shopt -s extglob
 # Adds any file ending in (exactly) "_key"
-eval "$(keychain -q -Q --eval --agents ssh ${HOME}/.ssh/*_key!(s|.pub))"
+eval "$(keychain -q -Q --eval ${HOME}/.ssh/*_key!(s|.pub))"
 
 # Add neovim bin to PATH
 # keeping for now
